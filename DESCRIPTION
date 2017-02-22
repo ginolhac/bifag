@@ -1,0 +1,15 @@
+Package: bifag
+Type: Package
+Title: Miscellaneous functions for bioinformatics, microarray analysis (Title Case)
+Version: 0.1.0
+Author: Aurélien Ginolhac
+Maintainer: Aurélien Ginolhac <aurelien.ginolhac@uni.lu>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-3
+Depends:
+    R (>= 3.0.0),
+    dplyr (>= 0.5.0)
+URL: http://github.com/ginolhac/bifag
+Encoding: UTF-8
+LazyData: true
