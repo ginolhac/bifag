@@ -1,5 +1,7 @@
 ---
-output: github_document
+output:
+  github_document:
+    html_preview: false
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -12,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Bifag
+# bifag
 
 [![Travis-CI Build Status](https://travis-ci.org/ginolhac/bifag.svg?branch=master)](https://travis-ci.org/ginolhac/bifag)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ginolhac/bifag?branch=master&svg=true)](https://ci.appveyor.com/project/ginolhac/bifag)

@@ -1,11 +1,10 @@
 Package: bifag
 Type: Package
-Title: Miscellaneous functions for bioinformatics, microarray analysis
 Version: 0.1.0
-Author: Aurélien Ginolhac
-Maintainer: Aurélien Ginolhac <aurelien.ginolhac@uni.lu>
+Title: Miscellaneous functions for bioinformatics, microarray analysis
 Description: small useful functions for daily actions in
     bioinformatics, NGS analysis on so on.
+Authors@R: person("Aurélien", "Ginolhac", , "aurelien.ginolhac@uni.lu", c("aut", "cre"))
 License: GPL-3
 Depends:
     R (>= 3.0.0),
@@ -14,6 +13,7 @@ Depends:
 URL: http://github.com/ginolhac/bifag
 Encoding: UTF-8
 LazyData: true
-Suggests: testthat,
+Suggests:
+    testthat,
     covr
 RoxygenNote: 6.0.1
