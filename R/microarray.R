@@ -22,8 +22,8 @@ NULL
 
 append_multiprobe_genes <- function(df, gene = "gene_symbol", probe = "probeset_id") {
   # Check whether data.frame name is supplied
-  if (is.null(df)) {
-    stop("data frame not supplied")
+  if (!is.data.frame(df)) {
+    stop("`df` must be a data frame / tibble", call. = FALSE)
   }
   if (gene %in% colnames(df) == FALSE) {
     stop(paste(gene, "must be a column in the specified dataframe"), call. = FALSE)
