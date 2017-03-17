@@ -1,5 +1,11 @@
-## bifag 0.1.0
 
+## bifag 0.1.1
+
+### utilities
+
+add `gaia_mount()`
+
+## bifag 0.1.0
 
 ### microarray
 

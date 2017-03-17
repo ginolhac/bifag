@@ -1,6 +1,6 @@
 Package: bifag
 Type: Package
-Version: 0.1.0
+Version: 0.1.1
 Title: Miscellaneous functions for bioinformatics, microarray analysis
 Description: small useful functions for daily actions in
     bioinformatics, NGS analysis on so on.
