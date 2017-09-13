@@ -6,3 +6,4 @@ Untitled.R
 ^appveyor\.yml$
 ^\.travis\.yml$
 ^codecov\.yml$
+^_pkgdown\.yml$
