@@ -3,7 +3,8 @@
 
 ### utilities
 
-add `gaia_mount()`
+- add `cluster_mount()`, generic for multiple hpc
+- add `gaia_mount()`
 
 ## bifag 0.1.0
 
