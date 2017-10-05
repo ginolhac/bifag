@@ -10,8 +10,8 @@ gaia_mount <- function() {
 }
 
 
-#' test if gaia is already mounted and do it if not
-#' @export
+#' test if any cluster is already mounted and do it if not
+#' @param cluster cluster name
 cluster_mount <- function(cluster) {
   test_bashrc <- file.path(Sys.getenv("HOME"), cluster, ".bashrc")
   if (!file.exists("test_bashrc")) {

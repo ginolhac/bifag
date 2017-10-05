@@ -2,10 +2,13 @@
 % Please edit documentation in R/utilities.R
 \name{cluster_mount}
 \alias{cluster_mount}
-\title{test if gaia is already mounted and do it if not}
+\title{test if any cluster is already mounted and do it if not}
 \usage{
 cluster_mount(cluster)
 }
+\arguments{
+\item{cluster}{cluster name}
+}
 \description{
-test if gaia is already mounted and do it if not
+test if any cluster is already mounted and do it if not
 }
