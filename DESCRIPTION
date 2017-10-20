@@ -8,13 +8,14 @@ Authors@R: person("Aurélien", "Ginolhac", , "aurelien.ginolhac@uni.lu", c("aut"
 License: GPL-3
 Depends:
     R (>= 3.4.0),
-    dplyr (>= 0.7.0),
+    dplyr (>= 0.7.0)
+Imports:
     rlang (>= 0.1.2),
     stringr,
-    purrr (>= 0.2.4),
+    withr,
     rstudioapi,
     knitr,
-    withr
+    purrr
 URL: http://github.com/ginolhac/bifag
 Encoding: UTF-8
 LazyData: true
