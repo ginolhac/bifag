@@ -1,3 +1,15 @@
+#' @importFrom purrr map
+#' @importFrom purrr flatten_chr
+#' @importFrom purrr map_dfr
+#' @importFrom purrr possibly
+#' @importFrom stringr str_subset
+#' @importFrom stringr str_match_all
+#' @importFrom knitr current_input
+#' @importFrom rstudioapi getActiveDocumentContext
+#' @importFrom utils packageDescription
+#' @importFrom withr with_collate
+NULL
+
 #' Connect ot gaia
 #'
 #' test if gaia is already mounted and do it if not
@@ -9,9 +21,9 @@ gaia_mount <- function() {
   }
 }
 
-
 #' test if any cluster is already mounted and do it if not
 #' @param cluster cluster name
+#' @export
 cluster_mount <- function(cluster) {
   test_bashrc <- file.path(Sys.getenv("HOME"), cluster, ".bashrc")
   if (!file.exists("test_bashrc")) {
@@ -20,4 +32,106 @@ cluster_mount <- function(cluster) {
     stopifnot(file.exists(file.path(Sys.getenv("HOME"), "bin", mnt)))
     system(file.path(Sys.getenv("HOME"), "bin", mnt))
   }
+}
+
+#' look from library calls and display their version and origin in a tibble
+#' From Eric Koncina
+#' @return A tibble of used packages
+#' @export
+session_info_nodep <- function() {
+  possibly(getActiveDocumentContext,
+                  otherwise = list(path = current_input()))()[["path"]] %>%
+    readLines() %>%
+    str_subset(pattern = "library\\(") %>%
+    str_match_all("library\\(\"?(\\w+)\"?\\)") %>%
+    map(2) %>%
+    flatten_chr() %>%
+    map_dfr(pkg_info)
+}
+
+#' copy from devtools
+#' @param desc a package name
+pkg_date <- function(desc) {
+  if (!is.null(desc$`Date/Publication`)) {
+    date <- desc$`Date/Publication`
+  }
+  else if (!is.null(desc$Built)) {
+    built <- strsplit(desc$Built, "; ")[[1]]
+    date <- built[3]
+  }
+  else {
+    date <- NA_character_
+  }
+  as.character(as.Date(strptime(date, "%Y-%m-%d")))
+}
+
+#' copy from devtools
+#' @param desc a package name
+pkg_source <- function(desc)
+{
+  if (!is.null(desc$GithubSHA1)) {
+    str <- paste0("Github (", desc$GithubUsername, "/", desc$GithubRepo,
+                  "@", substr(desc$GithubSHA1, 1, 7), ")")
+  }
+  else if (!is.null(desc$RemoteType)) {
+    remote_type <- desc$RemoteType
+    if (!is.null(desc$RemoteUsername) && (!is.null(desc$RemoteRepo))) {
+      user_repo <- paste0(desc$RemoteUsername, "/", desc$RemoteRepo)
+    }
+    else {
+      user_repo <- NULL
+    }
+    if (!is.null(desc$RemoteSha)) {
+      sha <- paste0("@", substr(desc$RemoteSha, 1, 7))
+    }
+    else {
+      sha <- NULL
+    }
+    if (!is.null(user_repo) || !is.null(sha)) {
+      user_repo_and_sha <- paste0(" (", user_repo, sha,
+                                  ")")
+    }
+    else {
+      user_repo_and_sha <- NULL
+    }
+    str <- paste0(remote_type, user_repo_and_sha)
+  }
+  else if (!is.null(desc$Repository)) {
+    repo <- desc$Repository
+    if (!is.null(desc$Built)) {
+      built <- strsplit(desc$Built, "; ")[[1]]
+      ver <- sub("$R ", "", built[1])
+      repo <- paste0(repo, " (", ver, ")")
+    }
+    repo
+  }
+  else if (!is.null(desc$biocViews)) {
+    "Bioconductor"
+  }
+  else {
+    "local"
+  }
+}
+
+#' copy from devtools
+#' @param pkgs package names
+pkg_info <- function(pkgs = loadedNamespaces()) {
+  desc <- suppressWarnings(lapply(pkgs, packageDescription))
+  not_installed <- vapply(desc, identical, logical(1), NA)
+  if (any(not_installed)) {
+    stop("`pkgs` ", paste0("'", pkgs[not_installed], "'",
+                           collapse = ", "), " are not installed", call. = FALSE)
+  }
+  pkgs <- with_collate("C", pkgs[order(tolower(pkgs), pkgs)])
+  attached <- pkgs %in% sub("^package:", "", search())
+  desc <- lapply(pkgs, packageDescription)
+  version <- vapply(desc, function(x) x$Version, character(1))
+  date <- vapply(desc, pkg_date, character(1))
+  source <- vapply(desc, pkg_source, character(1))
+  pkgs_df <- data.frame(package = pkgs, `*` = ifelse(attached,
+                                                     "*", ""), version = version, date = date, source = source,
+                        stringsAsFactors = FALSE, check.names = FALSE)
+  rownames(pkgs_df) <- NULL
+  class(pkgs_df) <- c("packages_info", "data.frame")
+  pkgs_df
 }
