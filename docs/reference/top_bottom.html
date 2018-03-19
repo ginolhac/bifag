@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>test if any cluster is already mounted and do it if not — cluster_mount • bifag</title>
+<title>Output top &amp; bottom targets after sorting by logFC — top_bottom • bifag</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="test if any cluster is already mounted and do it if not — cluster_mount" />
+<meta property="og:title" content="Output top &amp; bottom targets after sorting by logFC — top_bottom" />
 
-<meta property="og:description" content="test if any cluster is already mounted and do it if not" />
+<meta property="og:description" content="for DESeq2 results input tables" />
 <meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -87,24 +87,32 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>test if any cluster is already mounted and do it if not</h1>
-    <small>Source: <a href='http:/github.com/ginolhac/bifag/blob/master/R/utilities.R'><code>R/utilities.R</code></a></small>
+    <h1>Output top &amp; bottom targets after sorting by logFC</h1>
+    <small>Source: <a href='http:/github.com/ginolhac/bifag/blob/master/R/rna-seq.R'><code>R/rna-seq.R</code></a></small>
     </div>
 
     
-    <p>test if any cluster is already mounted and do it if not</p>
+    <p>for DESeq2 results input tables</p>
     
 
-    <pre class="usage"><span class='fu'>cluster_mount</span>(<span class='no'>cluster</span>)</pre>
+    <pre class="usage"><span class='fu'>top_bottom</span>(<span class='no'>.data</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>20</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>cluster</th>
-      <td><p>cluster name</p></td>
+      <th>.data</th>
+      <td><p>data.frame or tibble</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>desired number of top / bottom targets</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>tibble with 2 x n targets</p>
     
 
   </div>
@@ -112,7 +120,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

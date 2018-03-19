@@ -1,3 +1,24 @@
 templates:
   params:
     bootswatch: sandstone
+
+home:
+  links:
+  - text: LSRU bioinfomatics
+    href: https://wwwen.uni.lu/recherche/fstc/life_sciences_research_unit/core_positions/bioinformatics
+
+
+reference:
+  - title: "microarray"
+    contents:
+      - append_multiprobe_genes
+  - title: "RNA-seq"
+    contents:
+      - n_targets
+      - top_bottom
+  - title: "Miscellaneous"
+    desc: "various helpers"
+    contents:
+      - gaia_mount
+      - cluster_mount
+      - session_info_nodep

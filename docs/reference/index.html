@@ -18,13 +18,14 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Function reference" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -52,7 +53,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -61,7 +62,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -100,50 +101,60 @@
       <tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+            <h2 id="section-microarray" class="hasAnchor"><a href="#section-microarray" class="anchor"></a>microarray</h2>
             <p class="section-desc"></p>
           </th>
         </tr>
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="append_multiprobe_genes.html">append_multiprobe_genes</a></code> </p>
+            <p><code><a href="append_multiprobe_genes.html">append_multiprobe_genes()</a></code> </p>
           </td>
           <td><p>Summarised gene symbols by probeset</p></td>
-        </tr><tr>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-rna-seq" class="hasAnchor"><a href="#section-rna-seq" class="anchor"></a>RNA-seq</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
           <!--  -->
           <td>
-            <p><code><a href="cluster_mount.html">cluster_mount</a></code> </p>
+            <p><code><a href="n_targets.html">n_targets()</a></code> </p>
           </td>
-          <td><p>test if any cluster is already mounted and do it if not</p></td>
+          <td><p>Output number of retained targets according to p-value and logFC threshold</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="gaia_mount.html">gaia_mount</a></code> </p>
+            <p><code><a href="top_bottom.html">top_bottom()</a></code> </p>
+          </td>
+          <td><p>Output top &amp; bottom targets after sorting by logFC</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-miscellaneous" class="hasAnchor"><a href="#section-miscellaneous" class="anchor"></a>Miscellaneous</h2>
+            <p class="section-desc"><p>various helpers</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="gaia_mount.html">gaia_mount()</a></code> </p>
           </td>
           <td><p>Connect ot gaia</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="pkg_date.html">pkg_date</a></code> </p>
+            <p><code><a href="cluster_mount.html">cluster_mount()</a></code> </p>
           </td>
-          <td><p>copy from devtools</p></td>
+          <td><p>test if any cluster is already mounted and do it if not</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="pkg_info.html">pkg_info</a></code> </p>
-          </td>
-          <td><p>copy from devtools</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="pkg_source.html">pkg_source</a></code> </p>
-          </td>
-          <td><p>copy from devtools</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="session_info_nodep.html">session_info_nodep</a></code> </p>
+            <p><code><a href="session_info_nodep.html">session_info_nodep()</a></code> </p>
           </td>
           <td><p>look from library calls and display their version and origin in a tibble
 From Eric Koncina</p></td>
@@ -156,7 +167,9 @@ From Eric Koncina</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-microarray">microarray</a></li>
+      <li><a href="#section-rna-seq">RNA-seq</a></li>
+      <li><a href="#section-miscellaneous">Miscellaneous</a></li>
     </ul>
   </div>
 </div>
@@ -167,7 +180,7 @@ From Eric Koncina</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
@@ -175,3 +188,4 @@ From Eric Koncina</p></td>
 
   </body>
 </html>
+

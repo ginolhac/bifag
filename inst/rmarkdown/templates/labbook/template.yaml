@@ -1,1 +1,4 @@
 name: labbook
+description: >
+ Template for creating a new labbook every year
+create_dir: false

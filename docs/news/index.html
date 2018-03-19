@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • bifag</title>
+<title>Changelog • bifag</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,14 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Changelog" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -52,7 +53,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -61,7 +62,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -84,18 +85,54 @@
 
   <div class="col-md-9">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+      <h1>Change log <small></small></h1>
+      <small>Source: <a href='http:/github.com/ginolhac/bifag/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
     <div class="contents">
-    <div id="bifag-0-1-2" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bifag-0-1-2" class="anchor"></a>bifag 0.1.2</h2>
+    <div id="bifag-0-1-3" class="section level1">
+<h1 class="page-header">
+<a href="#bifag-0-1-3" class="anchor"></a>bifag 0.1.3</h1>
+<div id="rna-seq" class="section level4">
+<h4 class="hasAnchor">
+<a href="#rna-seq" class="anchor"></a>RNA-seq</h4>
 <ul>
+<li>add <code><a href="../reference/n_targets.html">n_targets()</a></code>
+</li>
+</ul>
+</div>
+<div id="section" class="section level2">
+<h2 class="hasAnchor">
+<a href="#section" class="anchor"></a>0.1.2</h2>
+<ul>
+<li>add <code>labbook</code> Rmd template</li>
 <li>move to tidyeval with <code>rlang</code>
 </li>
 <li>add <code>session_info_nodep</code> for Rmarkdown documents footer</li>
 </ul>
+</div>
+<div id="section-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#section-1" class="anchor"></a>0.1.1</h2>
+<div id="utilities" class="section level4">
+<h4 class="hasAnchor">
+<a href="#utilities" class="anchor"></a>utilities</h4>
+<ul>
+<li>add <code><a href="../reference/cluster_mount.html">cluster_mount()</a></code>, generic for multiple hpc</li>
+<li>add <code><a href="../reference/gaia_mount.html">gaia_mount()</a></code>
+</li>
+</ul>
+</div>
+</div>
+<div id="section-2" class="section level2">
+<h2 class="hasAnchor">
+<a href="#section-2" class="anchor"></a>0.1.0</h2>
+<div id="microarray" class="section level4">
+<h4 class="hasAnchor">
+<a href="#microarray" class="anchor"></a>microarray</h4>
+<p>add <code><a href="../reference/append_multiprobe_genes.html">append_multiprobe_genes()</a></code></p>
+</div>
+</div>
 </div>
     </div>
   </div>
@@ -104,7 +141,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#bifag-0-1-2">0.1.2</a></li>
+        <li><a href="#bifag-0-1-3">0.1.3</a></li>
       </ul>
     </div>
   </div>
@@ -117,7 +154,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
@@ -125,3 +162,4 @@
 
   </body>
 </html>
+
