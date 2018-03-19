@@ -17,7 +17,7 @@ NULL
 gaia_mount <- function() {
   if (!file.exists("/Users/aurelien.ginolhac/gaia/.bashrc/")) {
     message("gaia not mounted, mounting...")
-    system("~/bin/gaia_mount")
+    system(file.path(Sys.getenv("HOME"), "bin", "gaia_mount"))
   }
 }
 
@@ -40,7 +40,7 @@ cluster_mount <- function(cluster) {
 #' @export
 session_info_nodep <- function() {
   possibly(getActiveDocumentContext,
-                  otherwise = list(path = current_input()))()[["path"]] %>%
+           otherwise = list(path = current_input()))()[["path"]] %>%
     readLines() %>%
     str_subset(pattern = "library\\(") %>%
     str_match_all("library\\(\"?(\\w+)\"?\\)") %>%

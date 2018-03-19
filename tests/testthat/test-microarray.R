@@ -23,4 +23,5 @@ test_that("test errors on invalid inputs", {
   expect_error(append_multiprobe_genes(df = NULL), "`df` must be a data frame / tibble")
   expect_error(append_multiprobe_genes(df = c(1:3)), "`df` must be a data frame / tibble")
   expect_error(append_multiprobe_genes(toptable, gene = zzz), "zzz must be a column in the specified dataframe")
+  expect_error(append_multiprobe_genes(toptable, probe = zzp), "zzp must be a column in the specified dataframe")
 })
