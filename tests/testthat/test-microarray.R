@@ -16,6 +16,15 @@ test_that("append probeset ids, col names", {
   expect_equal(res2$my_gene, c("Myo_1101", "Zpt", "Myo_1103"))
 })
 
+test_that("additional grouping to avoid appending", {
+  toptable2 <- data.frame(my_gene = c("Myo", "Zpt", "Myo"),
+                          my_probe = c("1101", "1102", "1103"),
+                          type = c("wt", "wt", "treated"),
+                          stringsAsFactors = FALSE)
+  res2 <- append_multiprobe_genes(toptable2, gene = my_gene, probe = my_probe, type)
+  expect_equal(res2$my_gene, c("Myo", "Zpt", "Myo"))
+})
+
 test_that("test errors on invalid inputs", {
   toptable <- data.frame(gene_symbol = c("Myo", "Zpt", "Myo"),
                          probeset_id = c("1101", "1102", "1103"),

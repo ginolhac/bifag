@@ -97,7 +97,7 @@ the returned data frame will have unique gene symbols present only once" />
 the returned data frame will have unique gene symbols present only once</p>
     
 
-    <pre class="usage"><span class='fu'>append_multiprobe_genes</span>(<span class='no'>df</span>, <span class='kw'>gene</span> <span class='kw'>=</span> <span class='no'>gene_symbol</span>, <span class='kw'>probe</span> <span class='kw'>=</span> <span class='no'>probeset_id</span>)</pre>
+    <pre class="usage"><span class='fu'>append_multiprobe_genes</span>(<span class='no'>df</span>, <span class='kw'>gene</span> <span class='kw'>=</span> <span class='no'>gene_symbol</span>, <span class='kw'>probe</span> <span class='kw'>=</span> <span class='no'>probeset_id</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -113,6 +113,10 @@ the returned data frame will have unique gene symbols present only once</p>
     <tr>
       <th>probe</th>
       <td><p>unquotted column name for probeset_id</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>optional groups on top of gene symbol</p></td>
     </tr>
     </table>
     
