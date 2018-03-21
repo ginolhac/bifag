@@ -5,7 +5,10 @@
 \title{look from library calls and display their version and origin in a tibble
 From Eric Koncina}
 \usage{
-session_info_nodep()
+session_info_nodep(type = c("library", "colons"))
+}
+\arguments{
+\item{type}{either 'library' or 'colons' for library calls or colons for '::' calls}
 }
 \value{
 A tibble of used packages

@@ -13,7 +13,7 @@ append_multiprobe_genes(df, gene = gene_symbol, probe = probeset_id, ...)
 
 \item{probe}{unquotted column name for probeset_id}
 
-\item{...}{optional groups on top of gene symbol}
+\item{...}{optional groups on top of gene symbol to avoid appending}
 }
 \value{
 A data.frame of summarised gene symbols

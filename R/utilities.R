@@ -36,16 +36,30 @@ cluster_mount <- function(cluster) {
 
 #' look from library calls and display their version and origin in a tibble
 #' From Eric Koncina
+#' @param type either 'library' or 'colons' for library calls or colons for '::' calls
 #' @return A tibble of used packages
 #' @export
-session_info_nodep <- function() {
-  possibly(getActiveDocumentContext,
-           otherwise = list(path = current_input()))()[["path"]] %>%
+session_info_nodep <- function(type = c("library", "colons")) {
+
+  type <- match.arg(type)
+  if (type == "library") {
+    # regex to fetch pkg found here: https://www.kaggle.com/drobinson/analysis-of-r-packages-on-stack-overflow-over-time
+    # by David Robinson
+    reg <- "(?:library|require)\\([\"\']?([\\.a-zA-Z\\d]+).*?[\"\']?\\)|([\\.a-zA-Z\\d]+)::[\\._a-zA-Z\\d]+[\\(|:]"
+    idx <- 3
+  } else {
+    reg <- "library\\(\"?(\\w+)\"?\\)"
+    idx <- 2
+  }
+  possibly(rstudioapi::getActiveDocumentContext,
+           otherwise = list(path = knitr::current_input()))()[["path"]] %>%
     readLines() %>%
-    str_subset(pattern = "library\\(") %>%
-    str_match_all("library\\(\"?(\\w+)\"?\\)") %>%
-    map(2) %>%
+    stringr::str_replace_all("#.*\n", "\n") %>%
+    str_match_all(reg) %>%
+    map(idx) %>%
     flatten_chr() %>%
+    unique() %>%
+    stats::na.omit() %>%
     map_dfr(pkg_info)
 }
 
@@ -128,8 +142,7 @@ pkg_info <- function(pkgs = loadedNamespaces()) {
   version <- vapply(desc, function(x) x$Version, character(1))
   date <- vapply(desc, pkg_date, character(1))
   source <- vapply(desc, pkg_source, character(1))
-  pkgs_df <- data.frame(package = pkgs, `*` = ifelse(attached,
-                                                     "*", ""), version = version, date = date, source = source,
+  pkgs_df <- data.frame(package = pkgs, version = version, date = date, source = source,
                         stringsAsFactors = FALSE, check.names = FALSE)
   rownames(pkgs_df) <- NULL
   class(pkgs_df) <- c("packages_info", "data.frame")
