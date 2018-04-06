@@ -4,12 +4,16 @@
 \alias{top_bottom}
 \title{Output top & bottom targets after sorting by logFC}
 \usage{
-top_bottom(.data, n = 20)
+top_bottom(.data, n = 20, id = ensembl_id, symbol = symbol)
 }
 \arguments{
 \item{.data}{data.frame or tibble}
 
 \item{n}{desired number of top / bottom targets}
+
+\item{id}{unquotted column name of unique id}
+
+\item{symbol}{unquotted column name of gene symbols}
 }
 \value{
 tibble with 2 x n targets

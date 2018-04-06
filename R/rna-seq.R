@@ -22,12 +22,20 @@ n_targets <- function(.data, pval = 0.05, logratio = 1) {
 #' for DESeq2 results input tables
 #' @param .data data.frame or tibble
 #' @param n desired number of top / bottom targets
+#' @param id  unquotted column name of unique id
+#' @param symbol unquotted column name of gene symbols
 #' @return tibble with 2 x n targets
 #' @export
-top_bottom <- function(.data, n = 20, id = "ensembl_id", symbol = "symbol") {
+top_bottom <- function(.data, n = 20, id = ensembl_id, symbol = symbol) {
   nn <- enquo(n)
   iid <- enquo(id)
   ssymbol <- enquo(symbol)
+  if (!has_name(.data, quo_name(iid))) {
+    stop(paste(quo_name(iid), "must be a column in the specified dataframe"), call. = FALSE)
+  }
+  if (!has_name(.data, quo_name(ssymbol))) {
+    stop(paste(quo_name(ssymbol), "must be a column in the specified dataframe"), call. = FALSE)
+  }
   .data %>%
   arrange(desc(log2FoldChange)) %>%
     dplyr::select(!!ssymbol, !!iid:log2FoldChange, pvalue, padj) %>%

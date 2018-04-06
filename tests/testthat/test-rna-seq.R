@@ -32,8 +32,10 @@ test_that("top / bottom target", {
                                 4.80981843606926e-13, 1.84645609581295e-12, 4.46894628428287e-15,
                                 7.62919394023648e-28, 9.95126409664013e-29),
                        stringsAsFactors = FALSE)
-  expect_equal(nrow(top_bottom(dtable, n = 4)), 8L)
+  expect_equal(nrow(top_bottom(dtable, n = 4, id = ensembl_id)), 8L)
   expect_equal(nrow(top_bottom(dtable, n = 2)), 4L)
+  expect_error(top_bottom(dtable, id = zzz), "zzz must be a column in the specified dataframe")
+  expect_error(top_bottom(dtable, symbol = zzp), "zzp must be a column in the specified dataframe")
   res <- top_bottom(dtable, n = 2)
   expect_equal(res[1, "symbol"], "Cnl5")
   expect_equal(res[nrow(res), "symbol"], "Gba2")
