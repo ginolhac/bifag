@@ -12,7 +12,7 @@ NULL
 
 n_targets <- function(.data, pval = 0.05, logratio = 1) {
   .data %>%
-    as_tibble() %>%
+    as.data.frame() %>%
     dplyr::filter(padj < pval, abs(log2FoldChange) >= logratio) %>%
     nrow()
 }
@@ -24,11 +24,13 @@ n_targets <- function(.data, pval = 0.05, logratio = 1) {
 #' @param n desired number of top / bottom targets
 #' @return tibble with 2 x n targets
 #' @export
-top_bottom <- function(.data, n = 20) {
+top_bottom <- function(.data, n = 20, id = "ensembl_id", symbol = "symbol") {
   nn <- enquo(n)
+  iid <- enquo(id)
+  ssymbol <- enquo(symbol)
   .data %>%
   arrange(desc(log2FoldChange)) %>%
-    dplyr::select(symbol, ensembl_id:log2FoldChange, pvalue, padj) %>%
+    dplyr::select(!!ssymbol, !!iid:log2FoldChange, pvalue, padj) %>%
     # use rank to deal with eventual ties
     dplyr::filter(rank(log2FoldChange, ties.method = "first") %in% c(1:!!nn, (n() - (!!nn - 1)):n()))
 }
