@@ -2,9 +2,9 @@
 
 export(append_multiprobe_genes)
 export(cluster_mount)
-export(gaia_mount)
 export(n_targets)
 export(session_info_nodep)
+export(str_subset_inv)
 export(top_bottom)
 import(dplyr)
 importFrom(knitr,current_input)

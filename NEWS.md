@@ -1,5 +1,7 @@
 # bifag 0.1.3
 
+
+- increase coverage
 #### RNA-seq
 
 - add `n_targets()` and `top_bottom()`

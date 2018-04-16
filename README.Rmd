@@ -21,3 +21,8 @@ knitr::opts_chunk$set(
 [![Coverage Status](https://img.shields.io/codecov/c/github/ginolhac/bifag/master.svg)](https://codecov.io/github/ginolhac/bifag?branch=master)
 
 personal functions for data analyses and helpers
+
+
+### TODO
+
+- `session_info_nodep()`, do not test chunk with `eval = FALSE` or should an option

@@ -2,7 +2,8 @@
 % Please edit documentation in R/utilities.R
 \name{cluster_mount}
 \alias{cluster_mount}
-\title{test if any cluster is already mounted and do it if not}
+\title{Connect to a cluster using sshfs
+test if the cluster is already mounted}
 \usage{
 cluster_mount(cluster)
 }
@@ -10,5 +11,6 @@ cluster_mount(cluster)
 \item{cluster}{cluster name}
 }
 \description{
-test if any cluster is already mounted and do it if not
+Connect to a cluster using sshfs
+test if the cluster is already mounted
 }

@@ -10,18 +10,8 @@
 #' @importFrom withr with_collate
 NULL
 
-#' Connect ot gaia
-#'
-#' test if gaia is already mounted and do it if not
-#' @export
-gaia_mount <- function() {
-  if (!file.exists("/Users/aurelien.ginolhac/gaia/.bashrc/")) {
-    message("gaia not mounted, mounting...")
-    system(file.path(Sys.getenv("HOME"), "bin", "gaia_mount"))
-  }
-}
-
-#' test if any cluster is already mounted and do it if not
+#' Connect to a cluster using sshfs
+#' test if the cluster is already mounted
 #' @param cluster cluster name
 #' @export
 cluster_mount <- function(cluster) {
@@ -36,32 +26,42 @@ cluster_mount <- function(cluster) {
 
 #' look from library calls and display their version and origin in a tibble
 #' From Eric Koncina
+#' @param file NULL for current doc or a path to a file
 #' @param type either 'library' or 'colons' for library calls or colons for '::' calls
 #' @return A tibble of used packages
 #' @export
-session_info_nodep <- function(type = c("library", "colons")) {
+session_info_nodep <- function(file = NULL, type = c("all", "library")) {
 
   type <- match.arg(type)
-  if (type == "library") {
+  if (type == "all") {
     # regex to fetch pkg found here: https://www.kaggle.com/drobinson/analysis-of-r-packages-on-stack-overflow-over-time
     # by David Robinson
     reg <- "(?:library|require)\\([\"\']?([\\.a-zA-Z\\d]+).*?[\"\']?\\)|([\\.a-zA-Z\\d]+)::[\\._a-zA-Z\\d]+[\\(|:]"
-    idx <- 3
-  } else {
+  } else if (type == "library") {
     reg <- "library\\(\"?(\\w+)\"?\\)"
-    idx <- 2
   }
-  possibly(rstudioapi::getActiveDocumentContext,
-           otherwise = list(path = knitr::current_input()))()[["path"]] %>%
+  f_input <- ifelse(is.null(file), possibly(rstudioapi::getActiveDocumentContext,
+                                            otherwise = list(path = knitr::current_input()))()[["path"]], file)
+  f_input %>%
     readLines() %>%
     stringr::str_replace_all("#.*\n", "\n") %>%
     str_match_all(reg) %>%
-    map(idx) %>%
     flatten_chr() %>%
+    str_subset_inv("\\(") %>%
     unique() %>%
     stats::na.omit() %>%
     map_dfr(pkg_info)
 }
+
+#' inverse version of str_subset
+#' @param vec a vector
+#' @param pattern pattern as character
+#' @return a vector without elements containing the pattern
+#' @export
+str_subset_inv <- function(vec, pattern) {
+  vec[!stringr::str_detect(vec, pattern)]
+}
+
 
 #' copy from devtools
 #' @param desc a package name

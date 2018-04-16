@@ -5,9 +5,11 @@
 \title{look from library calls and display their version and origin in a tibble
 From Eric Koncina}
 \usage{
-session_info_nodep(type = c("library", "colons"))
+session_info_nodep(file = NULL, type = c("all", "library"))
 }
 \arguments{
+\item{file}{NULL for current doc or a path to a file}
+
 \item{type}{either 'library' or 'colons' for library calls or colons for '::' calls}
 }
 \value{
