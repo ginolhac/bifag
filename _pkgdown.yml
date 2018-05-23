@@ -11,7 +11,7 @@ home:
 reference:
   - title: "microarray"
     contents:
-      - append_multiprobe_genes
+      - append_multiprobe_gene
   - title: "RNA-seq"
     contents:
       - n_targets
@@ -19,6 +19,6 @@ reference:
   - title: "Miscellaneous"
     desc: "various helpers"
     contents:
-      - gaia_mount
       - cluster_mount
       - session_info_nodep
+      - str_subset_inv
