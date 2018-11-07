@@ -4,7 +4,8 @@
 \alias{append_multiprobe_genes}
 \title{Summarised gene symbols by probeset}
 \usage{
-append_multiprobe_genes(df, gene = gene_symbol, probe = probeset_id, ...)
+append_multiprobe_genes(df, gene = gene_symbol, probe = probeset_id,
+  ...)
 }
 \arguments{
 \item{df}{data.frame or tibble}
