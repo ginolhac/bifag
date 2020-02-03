@@ -8,3 +8,7 @@ Untitled.R
 ^codecov\.yml$
 ^_pkgdown\.yml$
 ^docs$
+^\.github/workflows/R-CMD-check\.yaml$
+^\.github/workflows/pr-commands\.yaml$
+^\.github/workflows/pkgdown\.yaml$
+^\.github/workflows/render-readme\.yaml$
