@@ -9,6 +9,9 @@ dates_report(input = NULL)
 \arguments{
 \item{input}{vector of an input file, if null use current Rmd from knitting}
 }
+\value{
+character string of created/modif/today dates for Rmd header date field
+}
 \description{
 fill dates for Rmd header, with creation and last modification date
 }
