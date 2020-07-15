@@ -13,3 +13,4 @@ Untitled.R
 ^\.github/workflows/pkgdown\.yaml$
 ^\.github/workflows/render-readme\.yaml$
 ^LICENSE\.md$
+^\.github$
