@@ -14,6 +14,7 @@ NULL
 
 #' fill dates for Rmd header, with creation and last modification date
 #' @param input vector of an input file, if null use current Rmd from knitting
+#' @return character string of created/modif/today dates for Rmd header date field
 #' @export
 dates_report <- function(input = NULL) {
   if (is.null(input)) input <- current_input()
@@ -78,21 +79,11 @@ session_info_nodep <- function(file = NULL, type = c("all", "library")) {
     stringr::str_replace_all("#.*\n", "\n") %>%
     str_match_all(reg) %>%
     flatten_chr() %>%
-    str_subset_inv("\\(") %>%
+    str_subset("\\(", negate = TRUE) %>%
     unique() %>%
     stats::na.omit() %>%
     map_dfr(pkg_info)
 }
-
-#' inverse version of str_subset
-#' @param vec a vector
-#' @param pattern pattern as character
-#' @return a vector without elements containing the pattern
-#' @export
-str_subset_inv <- function(vec, pattern) {
-  vec[!stringr::str_detect(vec, pattern)]
-}
-
 
 #' copy from devtools
 #' @param desc a package name

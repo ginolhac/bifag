@@ -20,5 +20,5 @@ reference:
     desc: "various helpers"
     contents:
       - cluster_mount
+      - dates_report
       - session_info_nodep
-      - str_subset_inv

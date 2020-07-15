@@ -1,4 +1,4 @@
-# bifag 0.1.4
+# bifag 0.1.4 2020-07-15
 
 - three dates in Rmd report: creation, modif and compilation
 
