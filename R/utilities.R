@@ -4,11 +4,24 @@
 #' @importFrom purrr possibly
 #' @importFrom stringr str_subset
 #' @importFrom stringr str_match_all
+#' @importFrom stringr str_extract
 #' @importFrom knitr current_input
 #' @importFrom rstudioapi getActiveDocumentContext
 #' @importFrom utils packageDescription
 #' @importFrom withr with_collate
+#' @importFrom fs file_info
 NULL
+
+#' fill dates for Rmd header, with creation and last modification date
+#' @param input vector of an input file, if null use current Rmd from knitting
+#' @export
+dates_report <- function(input = NULL) {
+  if (is.null(input)) input <- current_input()
+  creation_date <- fs::file_info(input)$birth_time
+  creation_date <- stringr::str_extract(creation_date, "^\\d{4}-\\d{2}-\\d{2}")
+  last_changed <- system2('date', args = c('--iso-8601=date', '-r', input), stdout = TRUE)
+  paste0(creation_date, " (last change: ", last_changed, ", compiled: ", Sys.Date(),")")
+}
 
 #' Connect to a cluster using sshfs
 #' test if the cluster is already mounted

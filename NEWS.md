@@ -1,7 +1,11 @@
+# bifag 0.1.4
+
+- three dates in Rmd report: creation, modif and compilation
+
 # bifag 0.1.3
 
-
 - increase coverage
+
 #### RNA-seq
 
 - add `n_targets()` and `top_bottom()`

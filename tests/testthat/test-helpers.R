@@ -22,3 +22,12 @@ test_that("str_subset", {
   expect_equal(res[1], "tidyverse")
   expect_equal(length(res), 2)
 })
+
+test_that("dates", {
+  dtmp <- tempfile()
+  # to create the tempfile
+  write("abc", dtmp)
+  dates <- dates_report(dtmp)
+  rex <- "^\\d{4}-\\d{2}-\\d{2} \\(last change: \\d{4}-\\d{2}-\\d{2}, compiled: \\d{4}-\\d{2}-\\d{2}\\)"
+  expect_true(grepl(rex, dates))
+})
