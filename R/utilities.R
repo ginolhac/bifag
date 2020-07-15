@@ -19,7 +19,8 @@ dates_report <- function(input = NULL) {
   if (is.null(input)) input <- current_input()
   creation_date <- fs::file_info(input)$birth_time
   creation_date <- stringr::str_extract(creation_date, "^\\d{4}-\\d{2}-\\d{2}")
-  last_changed <- system2('date', args = c('--iso-8601=date', '-r', input), stdout = TRUE)
+  last_changed <- fs::file_info(input)$change_time
+  last_changed <- stringr::str_extract(last_changed, "^\\d{4}-\\d{2}-\\d{2}")
   paste0(creation_date, " (last change: ", last_changed, ", compiled: ", Sys.Date(),")")
 }
 
