@@ -14,3 +14,4 @@ Untitled.R
 ^\.github/workflows/render-readme\.yaml$
 ^LICENSE\.md$
 ^\.github$
+^pkgdown$

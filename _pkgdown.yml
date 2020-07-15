@@ -4,14 +4,14 @@ templates:
 
 home:
   links:
-  - text: LSRU bioinfomatics
-    href: https://wwwen.uni.lu/recherche/fstc/life_sciences_research_unit/core_positions/bioinformatics
+  - text: DLSM bioinfomatics
+    href: https://wwwen.uni.lu/research/fstm/dlsm/core_positions/bioinformatics
 
 
 reference:
   - title: "microarray"
     contents:
-      - append_multiprobe_gene
+      - append_multiprobe_genes
   - title: "RNA-seq"
     contents:
       - n_targets
