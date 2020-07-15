@@ -17,8 +17,25 @@ NULL
 #' @export
 dates_report <- function(input = NULL) {
   if (is.null(input)) input <- current_input()
-  creation_date <- fs::file_info(input)$birth_time
-  creation_date <- stringr::str_extract(creation_date, "^\\d{4}-\\d{2}-\\d{2}")
+  if (!file.exists(input)) stop("file does not exist", call. = FALSE)
+  # first try to get the first date in git history
+  creation_date <- tryCatch({
+    system2("git", args = c("log", "--pretty=format:'%ad'",
+                            "--date=short", "--reverse",
+                            input), stdout = TRUE)[1]
+  },
+  # if not available use the file modification date
+  warning = function(cond) {
+    birth <- fs::file_info(input)$birth_time
+    birth <- stringr::str_extract(birth, "^\\d{4}-\\d{2}-\\d{2}")
+    return(birth)
+  },
+  # same for an error
+  error = function(cond) {
+    birth <- fs::file_info(input)$birth_time
+    birth <- stringr::str_extract(birth, "^\\d{4}-\\d{2}-\\d{2}")
+    return(birth)
+  })
   last_changed <- fs::file_info(input)$change_time
   last_changed <- stringr::str_extract(last_changed, "^\\d{4}-\\d{2}-\\d{2}")
   paste0(creation_date, " (last change: ", last_changed, ", compiled: ", Sys.Date(),")")
