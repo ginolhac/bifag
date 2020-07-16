@@ -122,7 +122,7 @@ the returned data frame will have unique gene symbols present only once" />
 the returned data frame will have unique gene symbols present only once</p>
     </div>
 
-    <pre class="usage"><span class='fu'>append_multiprobe_genes</span>(<span class='no'>df</span>, <span class='kw'>gene</span> <span class='kw'>=</span> <span class='no'>gene_symbol</span>, <span class='kw'>probe</span> <span class='kw'>=</span> <span class='no'>probeset_id</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>append_multiprobe_genes</span>(<span class='kw'>df</span>, gene = <span class='kw'>gene_symbol</span>, probe = <span class='kw'>probeset_id</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,11 +150,12 @@ the returned data frame will have unique gene symbols present only once</p>
     <p>A data.frame of summarised gene symbols</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>bifag</span>)
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://github.com/ginolhac/bifag'>bifag</a></span>)
 
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>append_multiprobe_genes</span>(<span class='no'>df</span>)
-}</div></pre>
+<span class='kw'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/bifag/man/append_multiprobe_genes.html'>append_multiprobe_genes</a></span>(<span class='kw'>df</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -170,7 +171,7 @@ the returned data frame will have unique gene symbols present only once</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
