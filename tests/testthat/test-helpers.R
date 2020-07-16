@@ -14,15 +14,6 @@ test_that("packages loaded", {
   expect_equal(res_lib$package, "stats")
 })
 
-
-test_that("str_subset", {
-
-  my_string <- c("library(tidyverse)", "tidyverse" , NA, "bifag::session_info_nodep(")
-  res <- str_subset_inv(my_string, "\\(")
-  expect_equal(res[1], "tidyverse")
-  expect_equal(length(res), 2)
-})
-
 test_that("dates", {
   dtmp <- tempfile()
   # to create the tempfile
