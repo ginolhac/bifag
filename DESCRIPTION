@@ -3,7 +3,7 @@ Package: bifag
 Title: Miscellaneous Functions and Helpers for Bioinformatics
 Version: 0.1.3.999
 Authors@R: 
-    person(given = "Aurélien",
+    person(given = "AurÃ©lien",
            family = "Ginolhac",
            role = c("aut", "cre"),
            email = "aurelien.ginolhac@uni.lu")
