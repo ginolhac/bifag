@@ -1,4 +1,4 @@
-# bifag 0.2.0 2023
+# bifag 0.2.0 2023-10-13
 
 - Remove all unused functions
 
