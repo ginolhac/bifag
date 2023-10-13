@@ -1,24 +1,3 @@
-templates:
-  params:
-    bootswatch: sandstone
-
-home:
-  links:
-  - text: DLSM bioinfomatics
-    href: https://wwwen.uni.lu/research/fstm/dlsm/core_positions/bioinformatics
-
-
-reference:
-  - title: "microarray"
-    contents:
-      - append_multiprobe_genes
-  - title: "RNA-seq"
-    contents:
-      - n_targets
-      - top_bottom
-  - title: "Miscellaneous"
-    desc: "various helpers"
-    contents:
-      - cluster_mount
-      - dates_report
-      - session_info_nodep
+url: https://ginolhac.github.io/bifag/
+template:
+  bootstrap: 5
