@@ -35,4 +35,6 @@ vignettes/*.pdf
 .Rproj.user
 /docs
 
+.Rprofile
 /renv/
+
